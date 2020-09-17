@@ -4,7 +4,12 @@ pipeline{
     stages{
         stage("A"){
             steps{
-                echo "========executing A========"
+                script {
+                    def fullJobName = env.JOB_NAME
+                    multiBranchJob = fullJobName.subString(0,fullJobName.lastIndexOf('/'))
+                    jobs = jenkinsApiUtils.getEnabledJobs(job)
+                    println jobs
+                }
             }
         }
     }
