@@ -9,6 +9,13 @@ pipeline{
                     def multiBranchJob = fullJobName.substring(0,fullJobName.lastIndexOf('/'))
                     def jobs = jenkinsApiUtils.getEnabledJobs(multiBranchJob)
                     println jobs
+                    def multiBranchBuildNumber = 0
+                    jobs.each {
+                        def job = "${fullJobName}/${it}"
+                        def jobDetails = jenkinsApiUtils.getJobDetails(job)
+                        multiBranchBuildNumber = multiBranchBuildNumber + jobDetails.lastBuild.number
+                    }
+                    println multiBranchBuildNumber
                 }
             }
         }
