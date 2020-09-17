@@ -11,7 +11,7 @@ pipeline{
                     println jobs
                     def multiBranchBuildNumber = 0
                     jobs.each {
-                        def job = "${fullJobName}/${it}"
+                        def job = "${multiBranchJob}/${it}"
                         def jobDetails = jenkinsApiUtils.getJobDetails(job)
                         multiBranchBuildNumber = multiBranchBuildNumber + jobDetails.lastBuild.number
                     }
