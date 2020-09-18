@@ -16,9 +16,19 @@ pipeline{
                     def fullJobName = env.JOB_NAME
                     def multiBranchJob = fullJobName.substring(0,fullJobName.lastIndexOf('/'))
                     def tagViewUrl = jenkinsApiUtils.getJobUrl(multiBranchJob) + "/view/tags"
-                    def jobDetails = jenkinsApiUtils.request(tagViewUrl)
-                    def enabledJobs = jobDetails.jobs.findAll { it.color != 'disabled' } .collect { it.name }
-                    println enabledJobs
+                    def tags = []
+                    try {
+                        def jobDetails = jenkinsApiUtils.request(tagViewUrl)
+                        tags = jobDetails.jobs.findAll { it.color != 'disabled' } .collect { it.name }
+                    }
+                    catch (ex) {
+                        echo "there is not any tag for the git repository" 
+                    }
+
+                    println tags
+
+                    println tags[0]
+
                     // def jobs = jenkinsApiUtils.getEnabledJobs(multiBranchJob)
                     // println jobs
                     // def multiBranchBuildNumber = 0
