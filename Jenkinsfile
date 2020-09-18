@@ -18,7 +18,7 @@ pipeline{
                     def tagViewUrl = jenkinsApiUtils.getJobUrl(multiBranchJob) + "/view/tags"
                     def jobDetails = jenkinsApiUtils.request(tagViewUrl)
                     def enabledJobs = jobDetails.jobs.findAll { it.color != 'disabled' } .collect { it.name }
-                    println enablejobs
+                    println enabledJobs
                     // def jobs = jenkinsApiUtils.getEnabledJobs(multiBranchJob)
                     // println jobs
                     // def multiBranchBuildNumber = 0
