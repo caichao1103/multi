@@ -13,7 +13,9 @@ pipeline{
                     jobs.each {
                         def job = "${multiBranchJob}/${it}"
                         def jobDetails = jenkinsApiUtils.getJobDetails(job)
-                        multiBranchBuildNumber = multiBranchBuildNumber + jobDetails.lastBuild.number
+                        if (jobDetails.nextBuildNumber != 1) {
+                            multiBranchBuildNumber = multiBranchBuildNumber + jobDetails.lastBuild.number
+                        }                                                
                     }
                     println multiBranchBuildNumber
                 }
