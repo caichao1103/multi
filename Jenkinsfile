@@ -19,7 +19,7 @@ pipeline{
                     def tags = []
                     try {
                         def jobDetails = jenkinsApiUtils.request(tagViewUrl)
-                        tags = jobDetails.jobs.findAll { it.color != 'disabled' } .collect { it.name }
+                        tags = jobDetails.jobs.collect { it.name }
                     }
                     catch (ex) {
                         echo "there is not any tag for the git repository" 
