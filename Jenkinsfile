@@ -15,9 +15,10 @@ pipeline{
                 script {
                     def fullJobName = env.JOB_NAME
                     def multiBranchJob = fullJobName.substring(0,fullJobName.lastIndexOf('/'))
-                    def tagViewUrl = "${multiBranchJob}/view/tags/"
-                    def jobs = jenkinsApiUtils.getEnabledJobs(tagViewUrl)
-                    println jobs
+                    def tagViewUrl = jenkinsApiUtls.getJenkinsUrl() + "/${multiBranchJob}/view/tags/api/json"
+                    def jobDetails = jenkinsApiUtils.request()
+                    def enabledJobs = jobDetails.jobs.findAll { it.color != 'disabled' } .collect { it.name }
+                    println enablejobs
                     // def jobs = jenkinsApiUtils.getEnabledJobs(multiBranchJob)
                     // println jobs
                     // def multiBranchBuildNumber = 0
