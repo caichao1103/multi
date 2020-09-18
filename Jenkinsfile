@@ -19,6 +19,7 @@ pipeline{
                     def tags = []
                     try {
                         def jobDetails = jenkinsApiUtils.request(tagViewUrl)
+                        println jobDetails.jobs 
                         tags = jobDetails.jobs.collect { it.name }
                     }
                     catch (ex) {
