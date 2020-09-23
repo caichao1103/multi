@@ -32,6 +32,14 @@ pipeline{
                     println tags.contains(env.BRANCH_NAME)
                     println "env.TAG_NAME is " + env.TAG_NAME
 
+                    if (env.TAG_NAME) {
+                        println "this is a tag"
+                    }                        
+                    else {
+                        println "this is NOT a tag"
+                    }
+                        
+
                     // def jobs = jenkinsApiUtils.getEnabledJobs(multiBranchJob)
                     // println jobs
                     // def multiBranchBuildNumber = 0
