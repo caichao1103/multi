@@ -13,9 +13,10 @@ pipeline {
     }
     stages {
         stage("A") {
-        steps {
-            script {
-                echo "Hello"
+            steps {
+                script {
+                    echo "Hello"
+                }
             }
         }
     }
