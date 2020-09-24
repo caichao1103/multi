@@ -12,7 +12,7 @@ pipeline {
                 description: '测试环境, 线上环境')
     }
     stages {
-        stage("A")
+        stage("A") {
         steps {
             script {
                 echo "Hello"
