@@ -2,12 +2,18 @@
 def getTargetEnv() {
     return env.BRANCH_NAME
 }
+def getDockerRegistry() {
+    return dockerBuild.getDockerRegistry()
+}
 pipeline{
     agent any
     parameters {
         choice(name: 'TARGET_ENV',
             choices: getTargetEnv(),
-            description: '测试环境, 线上环境')        
+            description: '测试环境, 线上环境')  
+        choice(name: 'Docker_REGISTRY',
+            choices: getDockerRegistry(),
+            description: '')                                                 
     }
     stages{
         stage("A"){
