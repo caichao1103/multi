@@ -13,17 +13,20 @@ def getAppNames() {
     response.each {
         list.add(it.appName)
     }
-    return list.toString()
+    return list
 }
 
-
+def appName_script = '''
+    def appNameList = getAppNames()
+    return appNameList
+'''
 
 
 properties([
         parameters([
                 [$class: 'ChoiceParameter', choiceType: 'PT_SINGLE_SELECT',   name: 'APP_NAME',
                  script: [$class: 'GroovyScript', fallbackScript: [classpath: [], sandbox: true, script: 'return ["ERROR"]'],
-                 script: [classpath: [], sandbox: true, script: getAppNames()]]]
+                 script: [classpath: [], sandbox: true, script: appName_script]]]
         ])
 ])
 
