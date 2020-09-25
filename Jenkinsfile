@@ -2,14 +2,6 @@
 import groovy.json.JsonSlurper
 
 @NonCPS
-
-def json(value){
-
-    def JsonSlurper = new JsonSlurper()
-
-    return JsonSlurper.parseText(value, 'UTF-8')
-
-}
 def getAppNames() {
     def url = 'https://test-api.kingsoftgame.com/v2/uout/app/getAppInfoList'
     def http = new URL(url).openConnection() as HttpURLConnection
