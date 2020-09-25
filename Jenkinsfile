@@ -26,7 +26,7 @@ properties([
         parameters([
                 [$class: 'ChoiceParameter', choiceType: 'PT_SINGLE_SELECT',   name: 'APP_NAME',
                  script: [$class: 'GroovyScript', fallbackScript: [classpath: [], sandbox: true, script: 'return ["ERROR"]'],
-                 script: [classpath: [], sandbox: true, script: "return getAppNames()"]]]
+                 script: [classpath: [], sandbox: false, script: getAppNames()]]]
         ])
 ])
 
