@@ -7,7 +7,7 @@ def json(value){
 
     def JsonSlurper = new JsonSlurper()
 
-    return JsonSlurper.parseText(value)
+    return JsonSlurper.parseText(value, 'UTF-8')
 
 }
 def getAppNames() {
