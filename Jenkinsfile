@@ -1,8 +1,11 @@
 #!/usr/bin/env groovy
 
+
 def getBranchName() {
-    return env.BRANCH_NAME
+    return [env.BRANCH_NAME, env.JOB_NAME]
 }
+
+
 
 pipeline {
     agent any
