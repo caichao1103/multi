@@ -7,7 +7,7 @@ def json(value){
 
     def JsonSlurper = new JsonSlurper()
 
-    return JsonSlurper.parseText(result)
+    return JsonSlurper.parseText(value)
 
 }
 def getAppNames() {
