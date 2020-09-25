@@ -16,17 +16,17 @@ def getAppNames() {
     return list
 }
 
-def appName_script = '''
-    def appNameList = getAppNames()
-    return appNameList
-'''
+//def appName_script = '''
+//    def appNameList = getAppNames()
+//    return appNameList
+//'''
 
 
 properties([
         parameters([
                 [$class: 'ChoiceParameter', choiceType: 'PT_SINGLE_SELECT',   name: 'APP_NAME',
                  script: [$class: 'GroovyScript', fallbackScript: [classpath: [], sandbox: true, script: 'return ["ERROR"]'],
-                 script: [classpath: [], sandbox: true, script: appName_script]]]
+                 script: [classpath: [], sandbox: true, script: "return getAppNames()"]]]
         ])
 ])
 
