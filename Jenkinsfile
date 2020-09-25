@@ -16,6 +16,10 @@ def getAppNames() {
     return list
 }
 
+def appName_script = '''
+    def appNameList = getAppNames()
+    return appNameList
+'''
 
 
 properties([
