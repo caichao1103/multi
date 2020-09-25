@@ -1,7 +1,15 @@
 #!/usr/bin/env groovy
 import groovy.json.JsonSlurper
 
+@NonCPS
 
+def json(value){
+
+    def JsonSlurper = new JsonSlurper()
+
+    return JsonSlurper.parseText(result)
+
+}
 def getAppNames() {
     def url = 'https://test-api.kingsoftgame.com/v2/uout/app/getAppInfoList'
     def http = new URL(url).openConnection() as HttpURLConnection
@@ -13,7 +21,7 @@ def getAppNames() {
     response.each {
         list.add(it.appName)
     }
-    return list.join('\n')
+    return json(list)
 }
 
 
