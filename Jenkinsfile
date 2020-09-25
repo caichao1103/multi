@@ -1,19 +1,15 @@
 #!/usr/bin/env groovy
-def getBranchName() {
-    return env.BRANCH_NAME
+def getRegions() {
+    def choices = ['hw', 'cn']
+    return choices.join('\n')
 }
-def getDockerRegistry() {
-    return dockerBuild.getDockerRegistry()
-}
+
 pipeline{
     agent any
     parameters {
         choice(name: 'BRANCH_NAME',
-            choices: getBranchName(),
+            choices: getRegions(),
             description: '')
-        choice(name: 'Docker_REGISTRY',
-            choices: getDockerRegistry(),
-            description: '')                                                 
     }
     stages{
         stage("A"){
