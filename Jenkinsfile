@@ -13,7 +13,7 @@ def getAppNames() {
     response.each {
         list.add(it.appName)
     }
-    return json(list.join('\n'))
+    return list.join('\n')
 }
 
 
