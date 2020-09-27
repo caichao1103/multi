@@ -1,14 +1,14 @@
 #!/usr/bin/env groovy
 
-def getBranchName() {
-    return env.BRANCH_NAME
+def getJobName {
+    return env.JOB_NAME
 }
 
 pipeline {
     agent any
     parameters {
-        choice(name: 'BranchName',
-                choices: getBranchName(),
+        choice(name: 'JOBNAME',
+                choices: getJobName(),
                 description: '')
     }
     stages {
