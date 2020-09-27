@@ -1,6 +1,6 @@
 #!/usr/bin/env groovy
 
-def getJobName {
+def getJobName() {
     return env.JOB_NAME
 }
 
