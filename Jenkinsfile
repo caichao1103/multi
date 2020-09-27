@@ -1,14 +1,14 @@
 #!/usr/bin/env groovy
 
-def getJobName() {
-    return env.JOB_NAME
+def getREG() {
+    return dockerBuild.getDockerRegistry()
 }
 
 pipeline {
     agent any
     parameters {
-        choice(name: 'JOBNAME',
-                choices: getJobName(),
+        choice(name: 'REG',
+                choices: getREG(),
                 description: '')
     }
     stages {
