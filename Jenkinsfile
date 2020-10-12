@@ -18,7 +18,7 @@ pipeline{
 				script {
                     def fullJobName = env.JOB_NAME
                     def multiBranchJob = fullJobName.substring(0,fullJobName.lastIndexOf('/'))
-                    def jobs = getJobDetails(multiBranchJob).jobs
+                    def jobs = jenkinsApiUtils.getJobDetails(multiBranchJob).jobs
                     printf jobs
 
                 }
