@@ -18,9 +18,16 @@ pipeline{
 				script {
                     def fullJobName = env.JOB_NAME
                     def multiBranchJob = fullJobName.substring(0,fullJobName.lastIndexOf('/'))
+                    def totalBuildNumber = 0
                     def jobs = jenkinsApiUtils.getJobDetails(multiBranchJob).jobs
-                    println jobs
-
+                    jobs.each { job ->
+                        println job
+                        jobDetails = jenkinsApiUtils.request(job.url)
+//                        if (jobDetails.lastBuild) {
+                            totalBuildNumber = totalBuildNumber + jobDetails.lastBuild
+//                        }
+                    }
+                    println "totalBuildNumber is: $totalBuildNumber"
                 }
 			}
 		}
