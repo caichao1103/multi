@@ -23,9 +23,9 @@ pipeline{
                     jobs.each { job ->
                         println job
                         jobDetails = jenkinsApiUtils.request(job.url)
-//                        if (jobDetails.lastBuild) {
+                        if (jobDetails.lastBuild) {
                             totalBuildNumber = totalBuildNumber + jobDetails.lastBuild
-//                        }
+                        }
                     }
                     println "totalBuildNumber is: $totalBuildNumber"
                 }
