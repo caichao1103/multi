@@ -23,7 +23,7 @@ pipeline{
                     jobs.each { job ->
                         println job
                         jobDetails = jenkinsApiUtils.request(job.url)
-                        if (jobDetails.lastBuild) {
+                        if (jobDetails.lastBuild.containsKey("number")) {
                             println jobDetails.lastBuild.number
                             totalBuildNumber = totalBuildNumber + jobDetails.lastBuild.number
                         }
