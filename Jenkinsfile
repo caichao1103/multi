@@ -24,7 +24,7 @@ pipeline{
                         println job
                         jobDetails = jenkinsApiUtils.request(job.url)
                         println jobDetails.lastBuild.getClass()
-                        if (jobDetails.lastBuild != null ) {
+                        if (! jobDetails.lastBuild.equals(null) ) {
                             println jobDetails.lastBuild.number
                             totalBuildNumber = totalBuildNumber + jobDetails.lastBuild.number
                         }
