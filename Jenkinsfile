@@ -25,13 +25,12 @@ pipeline{
         stage('Validate Parameter') {
             steps {
                 script {
-                    if (params.RELEASE_NOTE) {
-                        currentBuild.description = params.RELEASE_NOTE
-                    } else if (params.BUILD_TARGET.equals(RELEASE) || params.BUILD_TARGET.equals(PUBLISH)) {
-                        error('在构建 Release 和 Publish 版本的时候，RELEASE_NOTE的值不能为空，用户必须输入。')
+                    println "git branch is ${env.GIT_BRANCH}"
+                    if (! env.GIT_BRANCH.equals('release')) {
+                        println "git branch name is not equal to release"
                     }
                 }
-            }
+                }
         }
 		stage('s2') {
 			steps {
