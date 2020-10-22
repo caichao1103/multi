@@ -29,6 +29,7 @@ pipeline{
                     if (! env.GIT_BRANCH.equals('release')) {
                         println "git branch name is not equal to release"
                     }
+                    println "job name is ${env.JOB_NAME}"
                 }
                 }
         }
