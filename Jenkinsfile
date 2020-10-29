@@ -28,6 +28,7 @@ pipeline {
                     println "git branch is ${env.BRANCH_NAME}"
                     sh "git checkout branchE; git branch"
                     println "git branch is ${env.BRANCH_NAME}"
+                    sh 'set'
                 }
             }
         }
