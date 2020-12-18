@@ -15,6 +15,7 @@ pipeline {
                     SCM_VARS = checkout scm
                     println(SCM_VARS)
                     sh "git status"
+                    println(env.BRANCH_NAME)
 
                 }
             }
