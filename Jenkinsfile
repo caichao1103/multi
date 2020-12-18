@@ -13,7 +13,7 @@ pipeline {
             steps {
                 script {
                     println(scm)
-                    SCM_VARS = git scm
+                    SCM_VARS = git url: 'git@github.com:caichao1103/multi.git'
                     println(SCM_VARS)
                     println("git branch is ${env.BRANCH_NAME}")
                     sh "git checkout branchE; git branch"
