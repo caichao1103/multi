@@ -12,7 +12,7 @@ pipeline {
         stage('Clone') {
             steps {
                 script {
-                    SCM_VARS = git url: 'git@github.com:caichao1103/multi.git', credentialsId: 'ssh-caichao-pc', branch: env.BRANCH_NAME
+                    SCM_VARS = git url: 'git@github.com:caichao1103/multi.git', credentialsId: 'ssh-caichao-pc'
                     println(SCM_VARS)
                     sh "git status"
                     println(env.BRANCH_NAME)
