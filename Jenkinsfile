@@ -8,6 +8,9 @@ PUBLISH = 'publish'
 
 pipeline {
     agent any
+    triggers {
+        pollSCM 'H/10 * * * *'
+    }
     stages {
         stage('Clone') {
             steps {
